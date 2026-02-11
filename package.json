@@ -1,0 +1,25 @@
+{
+  "name": "proba",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:run:chrome": "cypress run --browser chrome",
+    "cy:run:firefox": "cypress run --browser firefox"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.3.1",
+    "cypress": "^14.5.4",
+    "cypress-file-upload": "^5.0.8",
+    "cypress-grep": "^3.0.4",
+    "cypress-iframe": "^1.0.1",
+    "cypress-mochawesome-reporter": "^3.8.4",
+    "cypress-plugin-tab": "^1.0.5",
+    "cypress-xpath": "^2.0.1"
+  }
+}

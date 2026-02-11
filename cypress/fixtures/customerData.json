@@ -1,0 +1,19 @@
+{
+"validUserInfo":
+    {"firstName": "Mike",
+    "lastName": "Bork",
+    "zipCode": "12345"},
+
+
+"invalidUserInfo": [
+
+    {"firstName": "321",
+    "lastName": "321",
+    "zipCode": "321"},
+
+    {"firstName": "/.//",
+    "lastName": "!?.",
+    "zipCode": ".,#"}
+]
+
+}
