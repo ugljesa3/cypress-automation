@@ -8,6 +8,7 @@ Automated end-to-end testing framework for [Sauce Demo](https://www.saucedemo.co
 - **JavaScript** - Programming language
 - **Page Object Model (POM)** - Design pattern for maintainable tests
 - **Mochawesome Reporter** - HTML test reports
+- **GitHub Actions** - CI/CD pipeline for automated test execution
 
 ## Project Structure
 
@@ -22,7 +23,7 @@ cypress/
 │   ├── footer.cy.js
 │   ├── login.cy.js
 │   ├── productDetails.cy.js
-│   └── smoke.cy.js
+│   └── smoke.cy.js         # Critical path / Smoke tests
 ├── pages/                  # Page Object Model classes
 │   ├── cartPage.js
 │   ├── checkoutPage.js
@@ -38,6 +39,30 @@ cypress/
     ├── commands.js         # Custom Cypress commands
     └── e2e.js             # Global configurations
 ```
+
+## Architecture
+
+### Design Pattern: Page Object Model (POM)
+Project follows POM pattern for maintainability and scalability:
+- **Pages**: Encapsulate UI element selectors and page-specific actions (`cypress/pages/`)
+- **Tests**: Contain test logic and assertions only (`cypress/e2e/`)
+- **Fixtures**: External test data in JSON format for data-driven testing (`cypress/fixtures/`)
+
+This separation ensures that UI changes require updates in only one location (Page class), not across multiple test files.
+
+## Test Plan
+
+### Test Strategy
+| Type | Coverage | Files |
+|------|----------|-------|
+| Smoke | Critical user flows (login, checkout) | `smoke.cy.js` |
+| Regression | Full functionality validation | All `*.cy.js` files |
+
+### Test Categories
+- **Functional**: UI interactions, form validation, business logic
+- **E2E**: Complete user journeys (login -> cart -> checkout)
+- **Negative**: Error handling, invalid inputs, edge cases
+- **Cross-browser**: Chrome, Firefox compatibility
 
 ## Test Coverage
 
@@ -69,7 +94,7 @@ cypress/
 
 ```bash
 # Clone repository
-git clone https://github.com/ugljesa3/cypress-automation.git
+git clone https://github.com/ugljesa3/cypress-automation.git  
 
 # Navigate to project
 cd cypress-automation
@@ -86,6 +111,37 @@ npm run cy:open
 
 # Run all tests in headless mode
 npm run cy:run
+
+# Run in specific browser
+npm run cy:run:chrome
+npm run cy:run:firefox
+```
+
+## CI/CD Pipeline
+
+This project uses **GitHub Actions** for continuous integration:
+
+- **Trigger**: Tests run automatically on every push to main branch and on Pull Requests
+- **Browser**: Chrome (headless)
+- **Reports**: HTML reports generated as build artifacts
+- **Artifacts**: Screenshots and videos uploaded on test failure
+
+[View CI Status](../../actions)
+
+## Running Tests Locally
+
+```bash
+# Install dependencies
+npm install
+
+# Run all tests (headless)
+npm run cy:run
+
+# Run with HTML report
+npm run cy:run -- --reporter mochawesome
+
+# Open interactive mode for debugging
+npm run cy:open
 
 # Run in specific browser
 npm run cy:run:chrome
