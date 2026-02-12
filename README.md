@@ -56,13 +56,33 @@ This separation ensures that UI changes require updates in only one location (Pa
 | Type | Coverage | Files |
 |------|----------|-------|
 | Smoke | Critical user flows (login, checkout) | `smoke.cy.js` |
-| Regression | Full functionality validation | All `*.cy.js` files |
+| E2E | Complete end-to-end scenarios | `e2e.cy.js` |
 
 ### Test Categories
 - **Functional**: UI interactions, form validation, business logic
-- **E2E**: Complete user journeys (login -> cart -> checkout)
+- **E2E**: Complete user journeys (login → cart → checkout)
 - **Negative**: Error handling, invalid inputs, edge cases
 - **Cross-browser**: Chrome, Firefox compatibility
+
+### Test Techniques Applied
+
+**Smoke Testing:**
+- Authentication flows
+- Basic functionality verification
+
+**Functional Testing:**
+- Positive testing (valid inputs)
+- Negative testing (invalid inputs, error handling)
+- End-to-End testing (full user flows)
+
+**Non-Functional Testing:**
+- Browser navigation testing
+- Responsive / Mobile view testing
+
+**UI/UX Testing:**
+- Element visibility and presence
+- Label and text verification
+- External links validation
 
 ## Test Coverage
 
@@ -121,7 +141,7 @@ npm run cy:run:firefox
 
 This project uses **GitHub Actions** for continuous integration:
 
-- **Trigger**: Tests run automatically on every push to main branch and on Pull Requests
+- **Trigger**: Tests run automatically on every push to the main branch
 - **Browser**: Chrome (headless)
 - **Reports**: HTML reports generated as build artifacts
 - **Artifacts**: Screenshots and videos uploaded on test failure
